@@ -1,5 +1,185 @@
 import React, { useState } from 'react';
-import { Copy, Download, Trash2, Play } from 'lucide-react';
+
+const styles = {
+  container: {
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    padding: '30px 20px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  wrapper: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  header: {
+    marginBottom: '40px',
+    textAlign: 'center',
+    color: 'white',
+  },
+  title: {
+    fontSize: '42px',
+    fontWeight: 'bold',
+    margin: '0 0 10px 0',
+  },
+  subtitle: {
+    fontSize: '16px',
+    opacity: 0.9,
+    margin: 0,
+  },
+  gridContainer: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '30px',
+    marginBottom: '30px',
+  },
+  card: {
+    background: 'white',
+    borderRadius: '12px',
+    padding: '25px',
+    boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+  },
+  label: {
+    display: 'block',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: '10px',
+  },
+  input: {
+    width: '100%',
+    padding: '12px',
+    border: '2px solid #ddd',
+    borderRadius: '6px',
+    fontSize: '14px',
+    boxSizing: 'border-box',
+    marginBottom: '15px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  inputFocus: {
+    outline: 'none',
+    borderColor: '#667eea',
+    boxShadow: '0 0 5px rgba(102, 126, 234, 0.3)',
+  },
+  select: {
+    width: '100%',
+    padding: '12px',
+    border: '2px solid #ddd',
+    borderRadius: '6px',
+    fontSize: '14px',
+    boxSizing: 'border-box',
+    marginBottom: '15px',
+    fontFamily: 'Arial, sans-serif',
+    background: 'white',
+  },
+  description: {
+    fontSize: '13px',
+    color: '#666',
+    marginTop: '10px',
+    lineHeight: '1.5',
+  },
+  button: {
+    width: '100%',
+    padding: '14px',
+    background: '#667eea',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    transition: 'background 0.3s',
+  },
+  buttonHover: {
+    background: '#5568d3',
+  },
+  resultBox: {
+    background: '#f0f4ff',
+    padding: '15px',
+    borderRadius: '6px',
+    border: '2px solid #667eea',
+    marginTop: '15px',
+    fontFamily: 'monospace',
+    wordBreak: 'break-all',
+  },
+  codeBox: {
+    background: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '20px',
+    borderRadius: '6px',
+    fontFamily: 'monospace',
+    fontSize: '13px',
+    overflowX: 'auto',
+    marginTop: '20px',
+    whiteSpace: 'pre-wrap',
+  },
+  buttonGroup: {
+    display: 'flex',
+    gap: '10px',
+    marginTop: '15px',
+  },
+  smallButton: {
+    flex: 1,
+    padding: '10px',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontSize: '13px',
+    fontWeight: 'bold',
+    transition: 'opacity 0.2s',
+  },
+  copyButton: {
+    background: '#4CAF50',
+    color: 'white',
+  },
+  downloadButton: {
+    background: '#2196F3',
+    color: 'white',
+  },
+  clearButton: {
+    background: '#f44336',
+    color: 'white',
+  },
+  historyItem: {
+    background: '#f9f9f9',
+    padding: '12px',
+    borderRadius: '6px',
+    border: '1px solid #ddd',
+    cursor: 'pointer',
+    marginBottom: '10px',
+    transition: 'background 0.2s',
+  },
+  historyItemHover: {
+    background: '#f0f4ff',
+  },
+  historyTitle: {
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: '5px',
+  },
+  historySmall: {
+    fontSize: '12px',
+    color: '#666',
+  },
+  paramBox: {
+    marginBottom: '15px',
+  },
+  paramLabel: {
+    fontSize: '12px',
+    fontWeight: 'bold',
+    color: '#555',
+    marginBottom: '5px',
+    display: 'block',
+  },
+  paramInput: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    fontSize: '13px',
+    boxSizing: 'border-box',
+    fontFamily: 'Arial, sans-serif',
+  },
+};
 
 export default function JavaPlayground() {
   const [input, setInput] = useState('Hello World');
@@ -7,6 +187,7 @@ export default function JavaPlayground() {
   const [params, setParams] = useState({});
   const [history, setHistory] = useState([]);
   const [result, setResult] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   const methods = {
     length: { label: 'length()', params: [] },
@@ -62,7 +243,7 @@ export default function JavaPlayground() {
 
   const runMethod = () => {
     try {
-      let output, javaCode, explanation;
+      let output, javaCode;
       const method = selectedMethod;
 
       switch (method) {
@@ -228,17 +409,7 @@ export default function JavaPlayground() {
 
   const downloadResult = () => {
     if (!result) return;
-    const content = `JavaPlayground Output
-====================
-Method: ${result.method}
-Input: "${result.input}"
-Parameters: ${JSON.stringify(result.params)}
-Output: ${JSON.stringify(result.output)}
-
-Java Code:
-${result.javaCode}
-
-Timestamp: ${result.timestamp}`;
+    const content = `JavaPlayground Output\n====================\nMethod: ${result.method}\nInput: "${result.input}"\nParameters: ${JSON.stringify(result.params)}\nOutput: ${JSON.stringify(result.output)}\n\nJava Code:\n${result.javaCode}\n\nTimestamp: ${result.timestamp}`;
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -255,39 +426,40 @@ Timestamp: ${result.timestamp}`;
   const methodInfo = methods[selectedMethod];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-6xl mx-auto">
+    <div style={styles.container}>
+      <div style={styles.wrapper}>
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-indigo-900 mb-2">JavaPlayground</h1>
-          <p className="text-indigo-700">Experiment with Java String functions interactively</p>
+        <div style={styles.header}>
+          <h1 style={styles.title}>JavaPlayground</h1>
+          <p style={styles.subtitle}>Experiment with Java String functions interactively</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Input & Controls */}
-          <div className="lg:col-span-2 space-y-6">
+        <div style={styles.gridContainer}>
+          {/* Left Column - Controls */}
+          <div style={{ gridColumn: 'span 2' }}>
             {/* String Input */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Input String</label>
+            <div style={styles.card}>
+              <label style={styles.label}>Input String</label>
               <input
+                style={styles.input}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                onFocus={(e) => Object.assign(e.target.style, styles.inputFocus)}
                 placeholder="Enter a string to test..."
               />
             </div>
 
             {/* Method Selection */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Select Method</label>
+            <div style={styles.card}>
+              <label style={styles.label}>Select Method</label>
               <select
+                style={styles.select}
                 value={selectedMethod}
                 onChange={(e) => {
                   setSelectedMethod(e.target.value);
                   setParams({});
                 }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {Object.entries(methods).map(([key, val]) => (
                   <option key={key} value={key}>
@@ -295,133 +467,137 @@ Timestamp: ${result.timestamp}`;
                   </option>
                 ))}
               </select>
-              <p className="text-sm text-gray-600 mt-3">{explanations[selectedMethod]}</p>
+              <p style={styles.description}>{explanations[selectedMethod]}</p>
             </div>
 
             {/* Parameters */}
             {methodInfo.params.length > 0 && (
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-4">Parameters</label>
-                <div className="space-y-3">
-                  {methodInfo.params.map((param) => (
-                    <div key={param}>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">{param}</label>
-                      <input
-                        type="text"
-                        value={params[param] || ''}
-                        onChange={(e) => setParams({ ...params, [param]: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-                        placeholder={`Enter ${param}...`}
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div style={styles.card}>
+                <label style={styles.label}>Parameters</label>
+                {methodInfo.params.map((param) => (
+                  <div key={param} style={styles.paramBox}>
+                    <label style={styles.paramLabel}>{param}</label>
+                    <input
+                      style={styles.paramInput}
+                      type="text"
+                      value={params[param] || ''}
+                      onChange={(e) => setParams({ ...params, [param]: e.target.value })}
+                      placeholder={`Enter ${param}...`}
+                    />
+                  </div>
+                ))}
               </div>
             )}
 
             {/* Run Button */}
             <button
+              style={{
+                ...styles.button,
+                ...(hoveredButton === 'run' ? styles.buttonHover : {}),
+              }}
               onClick={runMethod}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition"
+              onMouseEnter={() => setHoveredButton('run')}
+              onMouseLeave={() => setHoveredButton(null)}
             >
-              <Play size={20} />
-              Run Method
+              ▶ Run Method
             </button>
           </div>
 
-          {/* Result Panel */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-lg font-bold text-gray-800 mb-4">Result</h2>
+          {/* Right Column - Results */}
+          <div>
+            <div style={styles.card}>
+              <h2 style={{ fontSize: '18px', fontWeight: 'bold', marginTop: 0 }}>Result</h2>
               {result ? (
-                <div className="space-y-4">
-                  <div className="bg-indigo-50 p-4 rounded border border-indigo-200">
-                    <p className="text-xs font-semibold text-gray-600 mb-1">OUTPUT:</p>
-                    <p className="font-mono text-sm text-indigo-900 break-all">
+                <div>
+                  <div style={styles.resultBox}>
+                    <strong>OUTPUT:</strong>
+                    <div style={{ marginTop: '10px' }}>
                       {typeof result.output === 'string'
                         ? `"${result.output}"`
                         : Array.isArray(result.output)
                         ? `[${result.output.map((x) => `"${x}"`).join(', ')}]`
                         : String(result.output)}
-                    </p>
+                    </div>
                   </div>
-                  <button
-                    onClick={() =>
-                      copyToClipboard(
-                        typeof result.output === 'object'
-                          ? JSON.stringify(result.output)
-                          : String(result.output)
-                      )
-                    }
-                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-medium"
-                  >
-                    <Copy size={16} />
-                    Copy
-                  </button>
-                  <button
-                    onClick={downloadResult}
-                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-green-100 text-green-700 rounded hover:bg-green-200 text-sm font-medium"
-                  >
-                    <Download size={16} />
-                    Download
-                  </button>
+                  <div style={styles.buttonGroup}>
+                    <button
+                      style={{ ...styles.smallButton, ...styles.copyButton }}
+                      onClick={() =>
+                        copyToClipboard(
+                          typeof result.output === 'object'
+                            ? JSON.stringify(result.output)
+                            : String(result.output)
+                        )
+                      }
+                    >
+                      📋 Copy
+                    </button>
+                    <button
+                      style={{ ...styles.smallButton, ...styles.downloadButton }}
+                      onClick={downloadResult}
+                    >
+                      ⬇ Download
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <p className="text-gray-500 text-sm">Run a method to see results</p>
+                <p style={{ color: '#999' }}>Run a method to see results</p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Java Code Panel */}
+        {/* Java Code */}
         {result && !result.error && (
-          <div className="mt-6 bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">Equivalent Java Code</h2>
-            <div className="bg-gray-900 text-gray-100 p-4 rounded font-mono text-sm overflow-x-auto">
-              <pre>{result.javaCode}</pre>
-            </div>
+          <div style={styles.card}>
+            <h2 style={{ fontSize: '18px', fontWeight: 'bold', marginTop: 0 }}>Equivalent Java Code</h2>
+            <div style={styles.codeBox}>{result.javaCode}</div>
             <button
+              style={{
+                ...styles.smallButton,
+                ...styles.copyButton,
+                marginTop: '10px',
+              }}
               onClick={() => copyToClipboard(result.javaCode)}
-              className="mt-3 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm font-medium flex items-center gap-2"
             >
-              <Copy size={16} />
-              Copy Code
+              📋 Copy Code
             </button>
           </div>
         )}
 
         {/* History */}
         {history.length > 0 && (
-          <div className="mt-6 bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-gray-800">History</h2>
+          <div style={styles.card}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: 'bold', margin: 0 }}>History</h2>
               <button
+                style={{ ...styles.smallButton, ...styles.clearButton, width: 'auto', padding: '8px 15px' }}
                 onClick={clearHistory}
-                className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 text-sm font-medium flex items-center gap-2"
               >
-                <Trash2 size={16} />
-                Clear
+                🗑 Clear
               </button>
             </div>
-            <div className="space-y-2 max-h-64 overflow-y-auto">
+            <div style={{ marginTop: '15px', maxHeight: '300px', overflowY: 'auto' }}>
               {history.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-gray-50 p-3 rounded border border-gray-200 text-sm cursor-pointer hover:bg-indigo-50 transition"
+                  style={styles.historyItem}
                   onClick={() => {
                     setInput(item.input);
                     setSelectedMethod(item.method);
                     setParams(item.params);
                     setResult(item);
                   }}
+                  onMouseEnter={(e) => Object.assign(e.currentTarget.style, styles.historyItemHover)}
+                  onMouseLeave={(e) => Object.assign(e.currentTarget.style, { background: '#f9f9f9' })}
                 >
-                  <p className="font-semibold text-gray-700">{item.method}</p>
-                  <p className="text-gray-600 text-xs">Input: "{item.input}"</p>
-                  <p className="text-indigo-600 text-xs">
+                  <div style={styles.historyTitle}>{item.method}</div>
+                  <div style={styles.historySmall}>Input: "{item.input}"</div>
+                  <div style={styles.historySmall}>
                     {typeof item.output === 'object'
                       ? JSON.stringify(item.output)
                       : String(item.output).substring(0, 50)}
-                  </p>
+                  </div>
                 </div>
               ))}
             </div>
