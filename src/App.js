@@ -7,179 +7,62 @@ const styles = {
     padding: '30px 20px',
     fontFamily: 'Arial, sans-serif',
   },
-  wrapper: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-  },
-  header: {
-    marginBottom: '40px',
-    textAlign: 'center',
-    color: 'white',
-  },
-  title: {
-    fontSize: '42px',
-    fontWeight: 'bold',
-    margin: '0 0 10px 0',
-  },
-  subtitle: {
-    fontSize: '16px',
-    opacity: 0.9,
-    margin: 0,
-  },
+  wrapper: { maxWidth: '1200px', margin: '0 auto' },
+  header: { marginBottom: '40px', textAlign: 'center', color: 'white' },
+  title: { fontSize: '42px', fontWeight: 'bold', margin: '0 0 10px 0' },
+  subtitle: { fontSize: '16px', opacity: 0.9, margin: 0 },
   gridContainer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
     gap: '30px',
     marginBottom: '30px',
   },
-  card: {
-    background: 'white',
-    borderRadius: '12px',
-    padding: '25px',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-  },
-  label: {
-    display: 'block',
-    fontSize: '14px',
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: '10px',
-  },
+  card: { background: 'white', borderRadius: '12px', padding: '25px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)' },
+  label: { display: 'block', fontSize: '14px', fontWeight: 'bold', color: '#333', marginBottom: '10px' },
   input: {
-    width: '100%',
-    padding: '12px',
-    border: '2px solid #ddd',
-    borderRadius: '6px',
-    fontSize: '14px',
-    boxSizing: 'border-box',
-    marginBottom: '15px',
-    fontFamily: 'Arial, sans-serif',
+    width: '100%', padding: '12px', border: '2px solid #ddd', borderRadius: '6px',
+    fontSize: '14px', boxSizing: 'border-box', marginBottom: '15px', fontFamily: 'Arial, sans-serif',
   },
-  inputFocus: {
-    outline: 'none',
-    borderColor: '#667eea',
-    boxShadow: '0 0 5px rgba(102, 126, 234, 0.3)',
-  },
+  inputFocus: { outline: 'none', borderColor: '#667eea', boxShadow: '0 0 5px rgba(102, 126, 234, 0.3)' },
   select: {
-    width: '100%',
-    padding: '12px',
-    border: '2px solid #ddd',
-    borderRadius: '6px',
-    fontSize: '14px',
-    boxSizing: 'border-box',
-    marginBottom: '15px',
-    fontFamily: 'Arial, sans-serif',
-    background: 'white',
+    width: '100%', padding: '12px', border: '2px solid #ddd', borderRadius: '6px',
+    fontSize: '14px', boxSizing: 'border-box', marginBottom: '15px', fontFamily: 'Arial, sans-serif', background: 'white',
   },
-  description: {
-    fontSize: '13px',
-    color: '#666',
-    marginTop: '10px',
-    lineHeight: '1.5',
-  },
+  description: { fontSize: '13px', color: '#666', marginTop: '10px', lineHeight: '1.5' },
   button: {
-    width: '100%',
-    padding: '14px',
-    background: '#667eea',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'background 0.3s',
+    width: '100%', padding: '14px', background: '#667eea', color: 'white', border: 'none',
+    borderRadius: '6px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', transition: 'background 0.3s',
   },
-  buttonHover: {
-    background: '#5568d3',
-  },
+  buttonHover: { background: '#5568d3' },
   resultBox: {
-    background: '#f0f4ff',
-    padding: '15px',
-    borderRadius: '6px',
-    border: '2px solid #667eea',
-    marginTop: '15px',
-    fontFamily: 'monospace',
-    wordBreak: 'break-all',
+    background: '#f0f4ff', padding: '15px', borderRadius: '6px', border: '2px solid #667eea',
+    marginTop: '15px', fontFamily: 'monospace', wordBreak: 'break-all',
   },
   codeBox: {
-    background: '#1e1e1e',
-    color: '#d4d4d4',
-    padding: '20px',
-    borderRadius: '6px',
-    fontFamily: 'monospace',
-    fontSize: '13px',
-    overflowX: 'auto',
-    marginTop: '20px',
-    whiteSpace: 'pre-wrap',
+    background: '#1e1e1e', color: '#d4d4d4', padding: '20px', borderRadius: '6px',
+    fontFamily: 'monospace', fontSize: '13px', overflowX: 'auto', marginTop: '20px', whiteSpace: 'pre-wrap',
   },
-  buttonGroup: {
-    display: 'flex',
-    gap: '10px',
-    marginTop: '15px',
-  },
-  smallButton: {
-    flex: 1,
-    padding: '10px',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    fontSize: '13px',
-    fontWeight: 'bold',
-    transition: 'opacity 0.2s',
-  },
-  copyButton: {
-    background: '#4CAF50',
-    color: 'white',
-  },
-  downloadButton: {
-    background: '#2196F3',
-    color: 'white',
-  },
-  clearButton: {
-    background: '#f44336',
-    color: 'white',
-  },
-  historyItem: {
-    background: '#f9f9f9',
-    padding: '12px',
-    borderRadius: '6px',
-    border: '1px solid #ddd',
-    cursor: 'pointer',
-    marginBottom: '10px',
-    transition: 'background 0.2s',
-  },
-  historyItemHover: {
-    background: '#f0f4ff',
-  },
-  historyTitle: {
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: '5px',
-  },
-  historySmall: {
-    fontSize: '12px',
-    color: '#666',
-  },
-  paramBox: {
-    marginBottom: '15px',
-  },
-  paramLabel: {
-    fontSize: '12px',
-    fontWeight: 'bold',
-    color: '#555',
-    marginBottom: '5px',
-    display: 'block',
-  },
-  paramInput: {
-    width: '100%',
-    padding: '10px',
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    fontSize: '13px',
-    boxSizing: 'border-box',
-    fontFamily: 'Arial, sans-serif',
-  },
+  buttonGroup: { display: 'flex', gap: '10px', marginTop: '15px' },
+  smallButton: { flex: 1, padding: '10px', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', transition: 'opacity 0.2s' },
+  copyButton: { background: '#4CAF50', color: 'white' },
+  downloadButton: { background: '#2196F3', color: 'white' },
+  clearButton: { background: '#f44336', color: 'white' },
+  historyItem: { background: '#f9f9f9', padding: '12px', borderRadius: '6px', border: '1px solid #ddd', cursor: 'pointer', marginBottom: '10px', transition: 'background 0.2s' },
+  historyItemHover: { background: '#f0f4ff' },
+  historyTitle: { fontWeight: 'bold', color: '#333', marginBottom: '5px' },
+  historySmall: { fontSize: '12px', color: '#666' },
+  paramBox: { marginBottom: '15px' },
+  paramLabel: { fontSize: '12px', fontWeight: 'bold', color: '#555', marginBottom: '5px', display: 'block' },
+  paramInput: { width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '13px', boxSizing: 'border-box', fontFamily: 'Arial, sans-serif' },
 };
+
+const escapeJavaString = (str) =>
+  str
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\t/g, '\\t');
 
 export default function JavaPlayground() {
   const [input, setInput] = useState('Hello World');
@@ -245,88 +128,89 @@ export default function JavaPlayground() {
     try {
       let output, javaCode;
       const method = selectedMethod;
+      const s = escapeJavaString(input);
 
       switch (method) {
         case 'length':
           output = input.length;
-          javaCode = `String str = "${input}";\nint result = str.length();`;
+          javaCode = `String str = "${s}";\nint result = str.length();`;
           break;
         case 'charAt': {
           const idx = parseInt(params.index) || 0;
           output = input.charAt(idx);
-          javaCode = `String str = "${input}";\nchar result = str.charAt(${idx});`;
+          javaCode = `String str = "${s}";\nchar result = str.charAt(${idx});`;
           break;
         }
         case 'substring': {
           const start = parseInt(params.start) || 0;
           const end = parseInt(params.end) || input.length;
           output = input.substring(start, end);
-          javaCode = `String str = "${input}";\nString result = str.substring(${start}, ${end});`;
+          javaCode = `String str = "${s}";\nString result = str.substring(${start}, ${end});`;
           break;
         }
         case 'indexOf': {
           const sub = params.substring || '';
           output = input.indexOf(sub);
-          javaCode = `String str = "${input}";\nint result = str.indexOf("${sub}");`;
+          javaCode = `String str = "${s}";\nint result = str.indexOf("${escapeJavaString(sub)}");`;
           break;
         }
         case 'lastIndexOf': {
           const sub = params.substring || '';
           output = input.lastIndexOf(sub);
-          javaCode = `String str = "${input}";\nint result = str.lastIndexOf("${sub}");`;
+          javaCode = `String str = "${s}";\nint result = str.lastIndexOf("${escapeJavaString(sub)}");`;
           break;
         }
         case 'contains': {
           const sub = params.substring || '';
           output = input.includes(sub);
-          javaCode = `String str = "${input}";\nboolean result = str.contains("${sub}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.contains("${escapeJavaString(sub)}");`;
           break;
         }
         case 'startsWith': {
           const prefix = params.prefix || '';
           output = input.startsWith(prefix);
-          javaCode = `String str = "${input}";\nboolean result = str.startsWith("${prefix}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.startsWith("${escapeJavaString(prefix)}");`;
           break;
         }
         case 'endsWith': {
           const suffix = params.suffix || '';
           output = input.endsWith(suffix);
-          javaCode = `String str = "${input}";\nboolean result = str.endsWith("${suffix}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.endsWith("${escapeJavaString(suffix)}");`;
           break;
         }
         case 'equals': {
           const compare = params.compare || '';
           output = input === compare;
-          javaCode = `String str = "${input}";\nboolean result = str.equals("${compare}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.equals("${escapeJavaString(compare)}");`;
           break;
         }
         case 'equalsIgnoreCase': {
           const compare = params.compare || '';
           output = input.toLowerCase() === compare.toLowerCase();
-          javaCode = `String str = "${input}";\nboolean result = str.equalsIgnoreCase("${compare}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.equalsIgnoreCase("${escapeJavaString(compare)}");`;
           break;
         }
         case 'toLowerCase':
           output = input.toLowerCase();
-          javaCode = `String str = "${input}";\nString result = str.toLowerCase();`;
+          javaCode = `String str = "${s}";\nString result = str.toLowerCase();`;
           break;
         case 'toUpperCase':
           output = input.toUpperCase();
-          javaCode = `String str = "${input}";\nString result = str.toUpperCase();`;
+          javaCode = `String str = "${s}";\nString result = str.toUpperCase();`;
           break;
         case 'trim':
           output = input.trim();
-          javaCode = `String str = "${input}";\nString result = str.trim();`;
+          javaCode = `String str = "${s}";\nString result = str.trim();`;
           break;
         case 'strip':
           output = input.trim();
-          javaCode = `String str = "${input}";\nString result = str.strip();`;
+          javaCode = `String str = "${s}";\nString result = str.strip();`;
           break;
         case 'replace': {
           const oldChar = (params.oldChar || '')[0] || ' ';
           const newChar = (params.newChar || '')[0] || ' ';
           output = input.split(oldChar).join(newChar);
-          javaCode = `String str = "${input}";\nString result = str.replace('${oldChar}', '${newChar}');`;
+          javaCode = `String str = "${s}";\nString result = str.replace('${escapeJavaString(oldChar)}', '${escapeJavaString(newChar)}');`;
           break;
         }
         case 'replaceAll': {
@@ -337,50 +221,58 @@ export default function JavaPlayground() {
           } catch {
             output = 'Invalid regex pattern';
           }
-          javaCode = `String str = "${input}";\nString result = str.replaceAll("${regex}", "${repl}");`;
+          javaCode = `String str = "${s}";\nString result = str.replaceAll("${escapeJavaString(regex)}", "${escapeJavaString(repl)}");`;
           break;
         }
         case 'split': {
           const delim = params.delimiter || ' ';
           output = input.split(delim);
-          javaCode = `String str = "${input}";\nString[] result = str.split("${delim}");`;
+          javaCode = `String str = "${s}";\nString[] result = str.split("${escapeJavaString(delim)}");`;
           break;
         }
         case 'concat': {
           const str = params.str || '';
           output = input + str;
-          javaCode = `String str = "${input}";\nString result = str.concat("${str}");`;
+          javaCode = `String str = "${s}";\nString result = str.concat("${escapeJavaString(str)}");`;
           break;
         }
         case 'valueOf':
           output = String(input);
-          javaCode = `String str = "${input}";\nString result = String.valueOf(str);`;
+          javaCode = `String str = "${s}";\nString result = String.valueOf(str);`;
           break;
         case 'compareTo': {
+          // Java's compareTo returns the Unicode diff at the first differing char
           const compare = params.compare || '';
-          output = input.localeCompare(compare);
-          javaCode = `String str = "${input}";\nint result = str.compareTo("${compare}");`;
+          const minLen = Math.min(input.length, compare.length);
+          let diff = 0;
+          for (let i = 0; i < minLen; i++) {
+            diff = input.charCodeAt(i) - compare.charCodeAt(i);
+            if (diff !== 0) break;
+          }
+          output = diff !== 0 ? diff : input.length - compare.length;
+          javaCode = `String str = "${s}";\nint result = str.compareTo("${escapeJavaString(compare)}");`;
           break;
         }
         case 'matches': {
+          // Java's matches() anchors to the full string (equivalent to ^...$)
           const regex = params.regex || '.*';
           try {
-            output = new RegExp(regex).test(input);
+            output = new RegExp(`^(?:${regex})$`).test(input);
           } catch {
             output = 'Invalid regex pattern';
           }
-          javaCode = `String str = "${input}";\nboolean result = str.matches("${regex}");`;
+          javaCode = `String str = "${s}";\nboolean result = str.matches("${escapeJavaString(regex)}");`;
           break;
         }
         case 'repeat': {
           const count = parseInt(params.count) || 1;
           output = input.repeat(count);
-          javaCode = `String str = "${input}";\nString result = str.repeat(${count});`;
+          javaCode = `String str = "${s}";\nString result = str.repeat(${count});`;
           break;
         }
         case 'isBlank':
           output = input.trim() === '';
-          javaCode = `String str = "${input}";\nboolean result = str.isBlank();`;
+          javaCode = `String str = "${s}";\nboolean result = str.isBlank();`;
           break;
         default:
           output = 'Unknown method';
@@ -428,16 +320,13 @@ export default function JavaPlayground() {
   return (
     <div style={styles.container}>
       <div style={styles.wrapper}>
-        {/* Header */}
         <div style={styles.header}>
           <h1 style={styles.title}>JavaPlayground</h1>
           <p style={styles.subtitle}>Experiment with Java String functions interactively</p>
         </div>
 
         <div style={styles.gridContainer}>
-          {/* Left Column - Controls */}
           <div style={{ gridColumn: 'span 2' }}>
-            {/* String Input */}
             <div style={styles.card}>
               <label style={styles.label}>Input String</label>
               <input
@@ -450,27 +339,20 @@ export default function JavaPlayground() {
               />
             </div>
 
-            {/* Method Selection */}
             <div style={styles.card}>
               <label style={styles.label}>Select Method</label>
               <select
                 style={styles.select}
                 value={selectedMethod}
-                onChange={(e) => {
-                  setSelectedMethod(e.target.value);
-                  setParams({});
-                }}
+                onChange={(e) => { setSelectedMethod(e.target.value); setParams({}); }}
               >
                 {Object.entries(methods).map(([key, val]) => (
-                  <option key={key} value={key}>
-                    {val.label}
-                  </option>
+                  <option key={key} value={key}>{val.label}</option>
                 ))}
               </select>
               <p style={styles.description}>{explanations[selectedMethod]}</p>
             </div>
 
-            {/* Parameters */}
             {methodInfo.params.length > 0 && (
               <div style={styles.card}>
                 <label style={styles.label}>Parameters</label>
@@ -489,12 +371,8 @@ export default function JavaPlayground() {
               </div>
             )}
 
-            {/* Run Button */}
             <button
-              style={{
-                ...styles.button,
-                ...(hoveredButton === 'run' ? styles.buttonHover : {}),
-              }}
+              style={{ ...styles.button, ...(hoveredButton === 'run' ? styles.buttonHover : {}) }}
               onClick={runMethod}
               onMouseEnter={() => setHoveredButton('run')}
               onMouseLeave={() => setHoveredButton(null)}
@@ -503,7 +381,6 @@ export default function JavaPlayground() {
             </button>
           </div>
 
-          {/* Right Column - Results */}
           <div>
             <div style={styles.card}>
               <h2 style={{ fontSize: '18px', fontWeight: 'bold', marginTop: 0 }}>Result</h2>
@@ -522,20 +399,11 @@ export default function JavaPlayground() {
                   <div style={styles.buttonGroup}>
                     <button
                       style={{ ...styles.smallButton, ...styles.copyButton }}
-                      onClick={() =>
-                        copyToClipboard(
-                          typeof result.output === 'object'
-                            ? JSON.stringify(result.output)
-                            : String(result.output)
-                        )
-                      }
+                      onClick={() => copyToClipboard(typeof result.output === 'object' ? JSON.stringify(result.output) : String(result.output))}
                     >
                       📋 Copy
                     </button>
-                    <button
-                      style={{ ...styles.smallButton, ...styles.downloadButton }}
-                      onClick={downloadResult}
-                    >
+                    <button style={{ ...styles.smallButton, ...styles.downloadButton }} onClick={downloadResult}>
                       ⬇ Download
                     </button>
                   </div>
@@ -547,17 +415,12 @@ export default function JavaPlayground() {
           </div>
         </div>
 
-        {/* Java Code */}
         {result && !result.error && (
           <div style={styles.card}>
             <h2 style={{ fontSize: '18px', fontWeight: 'bold', marginTop: 0 }}>Equivalent Java Code</h2>
             <div style={styles.codeBox}>{result.javaCode}</div>
             <button
-              style={{
-                ...styles.smallButton,
-                ...styles.copyButton,
-                marginTop: '10px',
-              }}
+              style={{ ...styles.smallButton, ...styles.copyButton, marginTop: '10px' }}
               onClick={() => copyToClipboard(result.javaCode)}
             >
               📋 Copy Code
@@ -565,15 +428,11 @@ export default function JavaPlayground() {
           </div>
         )}
 
-        {/* History */}
         {history.length > 0 && (
           <div style={styles.card}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h2 style={{ fontSize: '18px', fontWeight: 'bold', margin: 0 }}>History</h2>
-              <button
-                style={{ ...styles.smallButton, ...styles.clearButton, width: 'auto', padding: '8px 15px' }}
-                onClick={clearHistory}
-              >
+              <button style={{ ...styles.smallButton, ...styles.clearButton, width: 'auto', padding: '8px 15px' }} onClick={clearHistory}>
                 🗑 Clear
               </button>
             </div>
@@ -582,21 +441,14 @@ export default function JavaPlayground() {
                 <div
                   key={idx}
                   style={styles.historyItem}
-                  onClick={() => {
-                    setInput(item.input);
-                    setSelectedMethod(item.method);
-                    setParams(item.params);
-                    setResult(item);
-                  }}
+                  onClick={() => { setInput(item.input); setSelectedMethod(item.method); setParams(item.params); setResult(item); }}
                   onMouseEnter={(e) => Object.assign(e.currentTarget.style, styles.historyItemHover)}
                   onMouseLeave={(e) => Object.assign(e.currentTarget.style, { background: '#f9f9f9' })}
                 >
                   <div style={styles.historyTitle}>{item.method}</div>
                   <div style={styles.historySmall}>Input: "{item.input}"</div>
                   <div style={styles.historySmall}>
-                    {typeof item.output === 'object'
-                      ? JSON.stringify(item.output)
-                      : String(item.output).substring(0, 50)}
+                    {typeof item.output === 'object' ? JSON.stringify(item.output) : String(item.output).substring(0, 50)}
                   </div>
                 </div>
               ))}
