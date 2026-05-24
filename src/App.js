@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 const styles = {
   container: {
@@ -318,11 +319,28 @@ export default function JavaPlayground() {
   const methodInfo = methods[selectedMethod];
 
   return (
-    <div style={styles.container}>
-      <div style={styles.wrapper}>
+    <div style={styles.container} className="playground">
+      <div className="playground-bg" aria-hidden="true">
+        <div className="bg-orb bg-orb-1" />
+        <div className="bg-orb bg-orb-2" />
+        <div className="bg-orb bg-orb-3" />
+        <span className="bg-symbol" style={{ top: '8%',  left: '4%',  fontSize: '13px', animationDelay: '0s' }}>String str = "Hello";</span>
+        <span className="bg-symbol" style={{ top: '18%', left: '78%', fontSize: '12px', animationDelay: '1.2s' }}>int len = str.length();</span>
+        <span className="bg-symbol" style={{ top: '35%', left: '2%',  fontSize: '22px', animationDelay: '0.6s' }}>{ '{ }' }</span>
+        <span className="bg-symbol" style={{ top: '55%', left: '88%', fontSize: '12px', animationDelay: '2s'  }}>str.toUpperCase()</span>
+        <span className="bg-symbol" style={{ top: '70%', left: '5%',  fontSize: '12px', animationDelay: '1.5s' }}>boolean result = true;</span>
+        <span className="bg-symbol" style={{ top: '80%', left: '82%', fontSize: '13px', animationDelay: '0.3s' }}>str.split(" ")</span>
+        <span className="bg-symbol" style={{ top: '88%', left: '35%', fontSize: '12px', animationDelay: '1.8s' }}>str.indexOf("o")</span>
+        <span className="bg-symbol" style={{ top: '45%', left: '93%', fontSize: '20px', animationDelay: '0.9s' }}>[ ]</span>
+        <span className="bg-symbol" style={{ top: '25%', left: '48%', fontSize: '11px', animationDelay: '2.4s', opacity: 0.09 }}>// Java String Methods</span>
+        <span className="bg-symbol" style={{ top: '62%', left: '60%', fontSize: '10px', animationDelay: '1.1s' }}>str.matches("[A-Z].*")</span>
+        <span className="bg-symbol" style={{ top: '14%', left: '28%', fontSize: '10px', animationDelay: '3s'  }}>str.repeat(3)</span>
+        <span className="bg-symbol" style={{ top: '75%', left: '42%', fontSize: '120px', animationDelay: '0s', opacity: 0.025, lineHeight: 1 }}>J</span>
+      </div>
+      <div style={styles.wrapper} className="playground-wrapper">
         <div style={styles.header}>
-          <h1 style={styles.title}>JavaPlayground</h1>
-          <p style={styles.subtitle}>Experiment with Java String functions interactively</p>
+          <h1 style={styles.title} className="playground-title">JavaPlayground</h1>
+          <p style={styles.subtitle} className="playground-subtitle">Experiment with Java String functions interactively</p>
         </div>
 
         <div style={styles.gridContainer}>
@@ -459,3 +477,4 @@ export default function JavaPlayground() {
     </div>
   );
 }
+

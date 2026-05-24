@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #eef2ff;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  line-height: 1.5;
 }
 
-.App-header {
-  background-color: #282c34;
+/* ── Background ──────────────────────────────────── */
+
+.playground {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #080c14;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(99, 102, 241, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.14) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  padding: 32px 20px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.bg-orb-1 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  top: -180px;
+  left: -160px;
+}
+
+.bg-orb-2 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28), transparent 70%);
+  bottom: -100px;
+  right: 5%;
+}
+
+.bg-orb-3 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+  top: 42%;
+  left: 38%;
+}
+
+.bg-symbol {
+  position: absolute;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  color: rgba(129, 140, 248, 0.18);
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  animation: float 8s ease-in-out infinite;
+}
+
+.bg-symbol:nth-child(odd) {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.playground-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ──────────────────────────────────────── */
+
+.playground-header {
+  text-align: center;
+  margin-bottom: 36px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.playground-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #a5b4fc 0%, #e879f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.5));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.playground-subtitle {
+  font-size: 1rem;
+  color: rgba(165, 180, 252, 0.75);
 }
